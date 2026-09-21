@@ -91,6 +91,7 @@ async function prepareImage(file: File): Promise<Blob> {
 
 export default function Dogs() {
   const fileId = useId();
+  const fileInput = useRef<HTMLInputElement>(null);
   const [mode, setMode] = useState<Mode>("text");
   const [text, setText] = useState("");
   const [selection, setSelection] = useState<Selection | null>(null);
@@ -211,14 +212,16 @@ export default function Dogs() {
               <button disabled={busy || text.trim().length < 2}>{status === "deciding" ? "Deciding…" : "Ask Jev"}</button>
             </form>
           )}
-          {mode === "photo" && (
-            <label className={`photo-drop${dragging ? " dragging" : ""}`} htmlFor={fileId} onDragOver={(event) => { event.preventDefault(); setDragging(true); }} onDragLeave={() => setDragging(false)} onDrop={(event) => { event.preventDefault(); setDragging(false); const file = event.dataTransfer.files[0]; if (file) void usePhoto(file); }}>
-              {selection?.image ? <img src={selection.image} alt="Selected dog" /> : <span aria-hidden="true">＋</span>}
-              <strong>{status === "reading" ? "Reading the photo…" : status === "deciding" ? "Jev is deciding…" : selection?.image ? "Choose another photo" : "Choose or drop a dog photo"}</strong>
-              <small>JPG, PNG, or WebP · 8 MB max</small>
-              <input id={fileId} type="file" accept="image/jpeg,image/png,image/webp" disabled={busy} onChange={(event) => { const file = event.target.files?.[0]; event.target.value = ""; if (file) void usePhoto(file); }} />
-            </label>
-          )}
+          {mode === "photo" && <>
+            <input ref={fileInput} className="photo-input" id={fileId} type="file" accept="image/jpeg,image/png,image/webp" disabled={busy} onChange={(event) => { const file = event.target.files?.[0]; event.target.value = ""; if (file) void usePhoto(file); }} />
+            {!selection && (
+              <label className={`photo-drop${dragging ? " dragging" : ""}`} htmlFor={fileId} onDragOver={(event) => { event.preventDefault(); setDragging(true); }} onDragLeave={() => setDragging(false)} onDrop={(event) => { event.preventDefault(); setDragging(false); const file = event.dataTransfer.files[0]; if (file) void usePhoto(file); }}>
+                <span aria-hidden="true">＋</span>
+                <strong>Choose or drop a dog photo</strong>
+                <small>JPG, PNG, or WebP · 8 MB max</small>
+              </label>
+            )}
+          </>}
           {mode === "gallery" && !selection && (
             <div className="food-gallery">
               {dogs.map((dog: Dog) => (
@@ -229,8 +232,8 @@ export default function Dogs() {
             </div>
           )}
         </section>
-        {error && <div className="error-card" role="alert"><span>{error}</span>{selection && <button onClick={() => void classify(selection)}>Try again</button>}</div>}
-        {selection && status === "deciding" && mode !== "photo" && <div className="thinking"><span className="loader" /> Jev is deciding about {selection.name}…</div>}
+        {error && <div className="error-card" role="alert"><span>{error}</span>{selection && (mode === "photo" ? <button onClick={() => fileInput.current?.click()}>Different photo</button> : <button onClick={() => void classify(selection)}>Try again</button>)}</div>}
+        {selection && busy && <div className="thinking"><span className="loader" /> {status === "reading" ? "Reading the photo…" : `Jev is deciding about ${selection.name}…`}</div>}
         {selection && verdict && (
           <section className="verdict-card" aria-live="polite">
             {selection.image && <img className="verdict-image" src={selection.image} alt={selection.name} />}
@@ -243,12 +246,14 @@ export default function Dogs() {
                   <div key={category}><span className="category-label"><span aria-hidden="true">{emoji[category]}</span>{labels[category]}</span><i><b style={{ width: `${verdict.probabilities[category] * 100}%` }} /></i><strong>{Math.round(verdict.probabilities[category] * 100)}%</strong></div>
                 ))}
               </div>
-              <button className="again" onClick={() => reset(mode)}>Try another dog</button>
+              {mode === "photo"
+                ? <button className="again" onClick={() => fileInput.current?.click()}>Different photo</button>
+                : <button className="again" onClick={() => reset(mode)}>Try another dog</button>}
             </div>
           </section>
         )}
       </main>
-      <footer className="site-footer"><Link to="/">🥣 Soup, salad, sandwich</Link><button onClick={() => setDialog("credits")}>Photo credits</button></footer>
+      <footer className="site-footer"><button onClick={() => setDialog("credits")}>Photo credits</button></footer>
       {dialog === "rules" && <Dialog title="The rules" onClose={() => setDialog(null)}><Rules /></Dialog>}
       {dialog === "credits" && <Dialog title="Photo credits" onClose={() => setDialog(null)}><Credits /></Dialog>}
     </div>

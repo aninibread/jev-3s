@@ -98,6 +98,7 @@ async function prepareImage(file: File): Promise<Blob> {
 
 export default function Home() {
   const fileId = useId();
+  const fileInput = useRef<HTMLInputElement>(null);
   const [mode, setMode] = useState<Mode>("text");
   const [text, setText] = useState("");
   const [selection, setSelection] = useState<Selection | null>(null);
@@ -229,14 +230,16 @@ export default function Home() {
             </form>
           )}
 
-          {mode === "photo" && (
-            <label className={`photo-drop${dragging ? " dragging" : ""}`} htmlFor={fileId} onDragOver={(event) => { event.preventDefault(); setDragging(true); }} onDragLeave={() => setDragging(false)} onDrop={(event) => { event.preventDefault(); setDragging(false); const file = event.dataTransfer.files[0]; if (file) void usePhoto(file); }}>
-              {selection?.image ? <img src={selection.image} alt="Selected food" /> : <span aria-hidden="true">＋</span>}
-              <strong>{status === "reading" ? "Reading the photo…" : status === "deciding" ? "Jev is deciding…" : selection?.image ? "Choose another photo" : "Choose or drop a food photo"}</strong>
-              <small>JPG, PNG, or WebP · 8 MB max</small>
-              <input id={fileId} type="file" accept="image/jpeg,image/png,image/webp" disabled={busy} onChange={(event) => { const file = event.target.files?.[0]; event.target.value = ""; if (file) void usePhoto(file); }} />
-            </label>
-          )}
+          {mode === "photo" && <>
+            <input ref={fileInput} className="photo-input" id={fileId} type="file" accept="image/jpeg,image/png,image/webp" disabled={busy} onChange={(event) => { const file = event.target.files?.[0]; event.target.value = ""; if (file) void usePhoto(file); }} />
+            {!selection && (
+              <label className={`photo-drop${dragging ? " dragging" : ""}`} htmlFor={fileId} onDragOver={(event) => { event.preventDefault(); setDragging(true); }} onDragLeave={() => setDragging(false)} onDrop={(event) => { event.preventDefault(); setDragging(false); const file = event.dataTransfer.files[0]; if (file) void usePhoto(file); }}>
+                <span aria-hidden="true">＋</span>
+                <strong>Choose or drop a food photo</strong>
+                <small>JPG, PNG, or WebP · 8 MB max</small>
+              </label>
+            )}
+          </>}
 
           {mode === "gallery" && !selection && (
             <div className="food-gallery">
@@ -249,8 +252,8 @@ export default function Home() {
           )}
         </section>
 
-        {error && <div className="error-card" role="alert"><span>{error}</span>{selection && <button onClick={() => void classify(selection)}>Try again</button>}</div>}
-        {selection && status === "deciding" && mode !== "photo" && <div className="thinking"><span className="loader" /> Jev is deciding about {selection.name}…</div>}
+        {error && <div className="error-card" role="alert"><span>{error}</span>{selection && (mode === "photo" ? <button onClick={() => fileInput.current?.click()}>Different photo</button> : <button onClick={() => void classify(selection)}>Try again</button>)}</div>}
+        {selection && busy && <div className="thinking"><span className="loader" /> {status === "reading" ? "Reading the photo…" : `Jev is deciding about ${selection.name}…`}</div>}
 
         {selection && verdict && (
           <section className="verdict-card" aria-live="polite">
@@ -271,7 +274,9 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <button className="again" onClick={() => reset(mode)}>Try another food</button>
+              {mode === "photo"
+                ? <button className="again" onClick={() => fileInput.current?.click()}>Different photo</button>
+                : <button className="again" onClick={() => reset(mode)}>Try another food</button>}
             </div>
           </section>
         )}
