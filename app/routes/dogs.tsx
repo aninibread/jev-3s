@@ -92,7 +92,7 @@ async function prepareImage(file: File): Promise<Blob> {
 export default function Dogs() {
   const fileId = useId();
   const fileInput = useRef<HTMLInputElement>(null);
-  const [mode, setMode] = useState<Mode>("text");
+  const [mode, setMode] = useState<Mode>("gallery");
   const [text, setText] = useState("");
   const [selection, setSelection] = useState<Selection | null>(null);
   const [verdict, setVerdict] = useState<DogClassification | null>(null);
@@ -182,7 +182,7 @@ export default function Dogs() {
   return (
     <div className="app-shell">
       <header className="site-header">
-        <button className="brand" onClick={() => reset("text")}>wpr</button>
+        <button className="brand" onClick={() => reset("gallery")}>wpr</button>
         <nav><button onClick={() => setDialog("rules")}>Rules</button></nav>
       </header>
       <main className="classifier">
@@ -195,7 +195,7 @@ export default function Dogs() {
           <p>Give Jev a dog. It has to pick one.</p>
         </section>
         <div className="mode-tabs" role="tablist" aria-label="Choose a dog source">
-          {(["text", "photo", "gallery"] as Mode[]).map((item) => (
+          {(["gallery", "photo", "text"] as Mode[]).map((item) => (
             <button key={item} role="tab" aria-selected={mode === item} className={mode === item ? "active" : ""} onClick={() => reset(item)}>
               {item === "text" ? "Type" : item === "photo" ? "Photo" : "Gallery"}
             </button>
