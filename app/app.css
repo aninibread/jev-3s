@@ -110,7 +110,10 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
 .rules-content b span { display: inline-block; width: 22px; text-align: center; }
 .muted { color: var(--muted); font-size: 13px; }
 .credits-list { max-height: 58vh; overflow: auto; }
-.credits-list a, .credits-list > div { display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; }
+.credits-list > a, .credits-list > div { display: flex; justify-content: space-between; gap: 20px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.credits-list a { color: inherit; text-decoration: none; }
+.credits-list > div > a:first-child { min-width: 0; flex: 1; display: flex; justify-content: space-between; gap: 20px; }
+.credits-list > div > a:last-child { flex: none; }
 .credits-list small { color: var(--muted); text-align: right; }
 
 @media (max-width: 620px) {
@@ -118,7 +121,7 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
   .classifier { width: min(100% - 28px, 720px); padding-top: 48px; }
   .intro h1 { font-size: 38px; }
   .title-row { width: 100%; }
-  .game-switch-tag { right: -30px; width: 52px; height: 48px; border-radius: 14px 0 0 14px; font-size: 22px; }
+  .game-switch-tag { right: -12px; width: 52px; height: 48px; border-radius: 14px 0 0 14px; font-size: 22px; }
   .mode-tabs { width: 100%; }
   .mode-tabs button { min-width: 0; }
   .text-form input { font-size: 14px; }
@@ -129,6 +132,11 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
   .verdict-image { height: 230px; min-height: 0; }
   .verdict-content { padding: 24px 22px 26px; }
   .site-footer { margin-top: 10px; }
+  .credits-list > a { flex-direction: column; gap: 4px; }
+  .credits-list > div { display: grid; gap: 4px; }
+  .credits-list > div > a:first-child { display: grid; gap: 4px; }
+  .credits-list > div > a:last-child { display: block; }
+  .credits-list small { text-align: left; line-height: 1.35; }
 }
 
 @media (prefers-reduced-motion: reduce) {
