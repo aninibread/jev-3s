@@ -15,19 +15,35 @@ export class ApiError extends Error {
 }
 const object = (v: unknown): v is Record<string, unknown> =>
   typeof v === "object" && v !== null && !Array.isArray(v);
+
+function jevAnswer(value: unknown): Record<string, unknown> | null {
+  const queue: unknown[] = [value];
+  const seen = new Set<unknown>();
+  for (let depth = 0; queue.length && depth < 12; depth++) {
+    const candidate = queue.shift();
+    if (typeof candidate === "string") {
+      try { queue.push(JSON.parse(candidate)); } catch { /* Not JSON. */ }
+      continue;
+    }
+    if (!object(candidate) || seen.has(candidate)) continue;
+    seen.add(candidate);
+    if (object(candidate.answers) && object(candidate.answers.category))
+      return candidate.answers.category;
+    for (const key of ["result", "response", "output", "data"])
+      if (key in candidate) queue.push(candidate[key]);
+  }
+  return null;
+}
+
 export function parseJevResponse(
   value: unknown,
 ): Omit<Classification, "durationMs"> {
-  if (
-    !object(value) ||
-    !object(value.answers) ||
-    !object(value.answers.category)
-  )
+  const answer = jevAnswer(value);
+  if (!answer)
     throw new ApiError(
       502,
       "Jev returned an unreadable answer. Please try again.",
     );
-  const answer = value.answers.category;
   if (
     !categories.includes(answer.choice as Category) ||
     !object(answer.probabilities)

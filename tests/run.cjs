@@ -51,6 +51,10 @@ async function test(name, fn) {
 (async () => {
   await test("Jev parser accepts valid typed result", () =>
     assert.equal(parseJevResponse(good).choice, "soup"));
+  await test("Jev parser accepts binding response wrappers", () => {
+    assert.equal(parseJevResponse({ result: good }).choice, "soup");
+    assert.equal(parseJevResponse({ response: JSON.stringify(good) }).choice, "soup");
+  });
   await test("Jev parser rejects missing, nonfinite and invalid distributions", () => {
     for (const value of [
       null,

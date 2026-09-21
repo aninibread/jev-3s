@@ -201,10 +201,10 @@ export async function handleApi(
       const { description } = await jsonBody(request);
       if (
         typeof description !== "string" ||
-        description.trim().length < 8 ||
+        description.trim().length < 2 ||
         description.length > MAX_DESCRIPTION_LENGTH
       )
-        throw new ApiError(400, "Describe the food in 8–1,200 characters.");
+        throw new ApiError(400, "Describe the food in 2–1,200 characters.");
       return json(await classify(env.AI, description.trim(), request.signal));
     }
     const contentType = request.headers.get("content-type") || "";
