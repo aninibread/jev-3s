@@ -11,7 +11,6 @@ export function meta() {
 
 type Mode = "text" | "photo" | "gallery";
 type Selection = { name: string; description: string; image?: string };
-const emoji: Record<Category, string> = { soup: "🥣", salad: "🥗", sandwich: "🥪" };
 
 function Dialog({ title, onClose, children }: { title: string; onClose: () => void; children: ReactNode }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -240,9 +239,9 @@ export default function Home() {
           <section className="verdict-card" aria-live="polite">
             {selection.image && <img className="verdict-image" src={selection.image} alt={selection.name} />}
             <div className="verdict-content">
-              <p className="verdict-food">{selection.name}</p>
-              <h2><span>{emoji[verdict.choice]}</span> Jev says {labels[verdict.choice].toLowerCase()}.</h2>
-              {mode === "photo" && selection.description && <p className="detected">It saw: {selection.description}</p>}
+              {mode !== "photo" && <p className="verdict-food">{selection.name}</p>}
+              <h2>Jev says {labels[verdict.choice].toLowerCase()}.</h2>
+              {mode === "photo" && selection.description && <p className="detected">{selection.description}</p>}
               <div className="probability-list">
                 {categories.map((category) => (
                   <div key={category}>
@@ -258,7 +257,7 @@ export default function Home() {
         )}
       </main>
 
-      <footer className="site-footer"><span>Jev decides. You argue.</span><button onClick={() => setDialog("credits")}>Photo credits</button></footer>
+      <footer className="site-footer"><button onClick={() => setDialog("credits")}>Photo credits</button></footer>
       {dialog === "rules" && <Dialog title="The rules" onClose={() => setDialog(null)}><Rules /></Dialog>}
       {dialog === "credits" && <Dialog title="Photo credits" onClose={() => setDialog(null)}><Credits /></Dialog>}
     </div>

@@ -8,7 +8,7 @@
   --white: #fff;
   color: var(--ink);
   background: var(--paper);
-  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-synthesis: none;
 }
 
@@ -25,7 +25,7 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
 .brand { font-size: 19px; font-weight: 750; letter-spacing: -.06em; }
 .site-header nav button, .site-footer { color: var(--muted); font-size: 13px; }
 .site-header nav button:hover, .site-footer button:hover { color: var(--ink); }
-.site-footer { padding-top: 40px; padding-bottom: 18px; }
+.site-footer { justify-content: flex-end; padding-top: 40px; padding-bottom: 18px; }
 
 .classifier { width: min(100% - 32px, 720px); margin: 0 auto; padding: 74px 0 56px; align-self: start; }
 .intro { text-align: center; }
@@ -69,22 +69,20 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
 .error-card { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-top: 18px; padding: 14px 16px; border: 1px solid #ead1ca; border-radius: 12px; background: #fff9f7; color: #983b29; font-size: 13px; }
 .error-card button { flex: none; min-height: 34px; padding: 0 12px; font-size: 12px; }
 
-.verdict-card { display: grid; grid-template-columns: 210px 1fr; overflow: hidden; margin-top: 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); animation: appear .22s ease both; }
-@keyframes appear { from { opacity: 0; transform: translateY(5px); } }
-.verdict-image { width: 100%; height: 100%; min-height: 280px; object-fit: cover; background: #ebe9e4; }
-.verdict-content { padding: 25px; }
-.verdict-food { margin: 0 0 7px; color: var(--muted); font-size: 13px; }
-.verdict-content h2 { margin: 0; font-size: 28px; line-height: 1.12; letter-spacing: -.035em; }
-.verdict-content h2 span { font-size: 25px; }
-.detected { margin: 12px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
-.probability-list { display: grid; gap: 9px; margin-top: 24px; }
-.probability-list > div { display: grid; grid-template-columns: 70px 1fr 38px; align-items: center; gap: 10px; font-size: 11px; }
-.probability-list i { height: 3px; overflow: hidden; border-radius: 99px; background: var(--line); }
-.probability-list i b { display: block; height: 100%; border-radius: inherit; background: var(--ink); }
+.verdict-card { display: grid; grid-template-columns: 220px 1fr; overflow: hidden; margin-top: 22px; border: 1px solid #d8d6d0; border-radius: 4px; background: var(--white); }
+.verdict-image { width: 100%; height: 100%; min-height: 290px; object-fit: cover; background: #ebe9e4; }
+.verdict-content { padding: 28px 30px; }
+.verdict-food { margin: 0 0 9px; color: var(--muted); font-size: 12px; }
+.verdict-content h2 { margin: 0; font-size: 30px; font-weight: 600; line-height: 1.15; letter-spacing: -.025em; }
+.detected { max-width: 46ch; margin: 13px 0 0; color: #66635e; font-size: 13px; line-height: 1.45; }
+.probability-list { display: grid; gap: 11px; margin-top: 26px; }
+.probability-list > div { display: grid; grid-template-columns: 70px 1fr 40px; align-items: center; gap: 12px; font-size: 12px; }
+.probability-list i { height: 2px; overflow: hidden; background: var(--line); }
+.probability-list i b { display: block; height: 100%; background: var(--ink); }
 .probability-list strong { text-align: right; font-variant-numeric: tabular-nums; }
-.again { min-height: 40px; margin-top: 22px; padding: 0 15px; font-size: 13px; }
+.again { min-height: 38px; margin-top: 26px; padding: 0 14px; border-radius: 2px; background: transparent; color: var(--ink); font-size: 12px; font-weight: 600; }
 
-.modal { width: min(92vw, 460px); max-height: 82vh; padding: 0; border: 1px solid var(--line); border-radius: 16px; background: white; color: var(--ink); box-shadow: 0 24px 90px #0002; }
+.modal { position: fixed; inset: 0; width: min(92vw, 460px); max-height: min(82vh, 82dvh); margin: auto; padding: 0; border: 1px solid var(--line); border-radius: 16px; background: white; color: var(--ink); box-shadow: 0 24px 90px #0002; }
 .modal::backdrop { background: #0002; backdrop-filter: blur(4px); }
 .modal-inner { padding: 22px; }
 .modal-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
@@ -108,8 +106,8 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
   .food-gallery { grid-template-columns: repeat(2, 1fr); }
   .photo-drop { min-height: 250px; }
   .verdict-card { grid-template-columns: 1fr; }
-  .verdict-image { height: 210px; min-height: 0; }
-  .verdict-content { padding: 21px; }
+  .verdict-image { height: 230px; min-height: 0; }
+  .verdict-content { padding: 24px 22px 26px; }
   .site-footer { margin-top: 10px; }
 }
 
