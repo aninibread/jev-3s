@@ -130,4 +130,122 @@ export const dogs: Dog[] = [
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
   },
+  {
+    id: "german-shepherd",
+    name: "German shepherd",
+    description:
+      "A large athletic German shepherd with a substantial frame, long muzzle and tall upright ears.",
+    image: "/dogs/german-shepherd.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:20110425_German_Shepherd_Dog_8505.jpg",
+    creator: "Jakub Hałun",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+  },
+  {
+    id: "samoyed",
+    name: "Samoyed",
+    description:
+      "A medium-large fluffy white Samoyed with a sturdy athletic frame, pointed muzzle and upright ears.",
+    image: "/dogs/samoyed.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Samoyed_dog_two_year_old_female_dllu.jpg",
+    creator: "Dllu",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+  },
+  {
+    id: "great-dane",
+    name: "Great Dane",
+    description:
+      "A giant tall Great Dane with very long legs, a deep chest, long muzzle and floppy ears.",
+    image: "/dogs/great-dane.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Great-dane-dog-1365445651zZJ.jpg",
+    creator: "Karen Arnold",
+    license: "CC0",
+    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+  },
+  {
+    id: "shar-pei",
+    name: "Shar-Pei",
+    description:
+      "A medium stocky Shar-Pei with a broad body, short blunt muzzle, heavy facial wrinkles and small folded ears.",
+    image: "/dogs/shar-pei.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Chinese_Shar-Pei_Westminster_Dog_Show.jpg",
+    creator: "Dave from New York",
+    license: "CC BY-SA 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
+  },
+  {
+    id: "boston-terrier",
+    name: "Boston terrier",
+    description:
+      "A small compact Boston terrier with a broad chest, short blunt muzzle and large upright ears.",
+    image: "/dogs/boston-terrier.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Boston_Terrier_DSC_0004_(16399046489).jpg",
+    creator: "Pets Adviser",
+    license: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+  },
+  {
+    id: "basset-hound",
+    name: "Basset hound",
+    description:
+      "A heavy low-slung basset hound with a long body, very short sturdy legs, broad muzzle and long floppy ears.",
+    image: "/dogs/basset-hound.webp",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Basset_hound_LM.jpg",
+    creator: "Lilly M",
+    license: "CC BY-SA 2.5",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.5",
+  },
+  {
+    id: "papillon",
+    name: "Papillon",
+    description:
+      "A tiny fine-boned Papillon with delicate legs, a narrow muzzle and very large fringed upright ears.",
+    image: "/dogs/papillon.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Papillon_2011_agility.jpg",
+    creator: "f/orme Pet Photography",
+    license: "CC BY-SA 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
+  },
+  {
+    id: "chinese-crested",
+    name: "Chinese crested",
+    description:
+      "A small fine-boned Chinese crested dog with delicate legs, a narrow muzzle, large upright ears and sparse body hair.",
+    image: "/dogs/chinese-crested.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Chinese_Crested_Dog_(12482544324).jpg",
+    creator: "Pets Adviser",
+    license: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+  },
+  {
+    id: "whippet",
+    name: "Whippet",
+    description:
+      "A medium lean fine-boned whippet with very long delicate legs, a deep chest and long narrow muzzle.",
+    image: "/dogs/whippet.webp",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Whippet_stacked.jpg",
+    creator: "Sagaciousphil",
+    license: "CC BY-SA 3.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
+  },
+  {
+    id: "yorkshire-terrier",
+    name: "Yorkshire terrier",
+    description:
+      "A tiny fine-boned Yorkshire terrier with delicate legs, a small narrow muzzle and upright ears.",
+    image: "/dogs/yorkshire-terrier.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Yorkshire_Terrier_portrait.jpg",
+    creator: "Jeronimo Palacios",
+    license: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+  },
 ];

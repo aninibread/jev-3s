@@ -459,4 +459,17 @@ export const foods: Food[] = [
     modifications: "Resized, cropped and converted to WebP.",
     debatable: true,
   },
+  {
+    id: "brownie",
+    name: "Brownies",
+    description: "Several square pieces of chocolate brownie arranged on a plate.",
+    image: "/foods/brownie.webp",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Homemade_brownies.png",
+    creator: "Marius Vassnes",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+    attribution: "Homemade brownies — Marius Vassnes (CC BY-SA 4.0)",
+    modifications: "Resized, cropped and converted to WebP.",
+    debatable: true,
+  },
 ];

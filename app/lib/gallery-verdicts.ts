@@ -32,4 +32,5 @@ export const galleryVerdicts: Record<string, Verdict> = {
   "berry-smoothie": { id: "berry-smoothie", choice: "soup", probabilities: { soup: 1, salad: 0, sandwich: 0 }, durationMs: 0 },
   "loaded-fries": { id: "loaded-fries", choice: "salad", probabilities: { soup: 0, salad: 0.96, sandwich: 0.04 }, durationMs: 0 },
   "salmon-nigiri": { id: "salmon-nigiri", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+  brownie: { id: "brownie", choice: "salad", probabilities: { soup: 0, salad: 0.83, sandwich: 0.17 }, durationMs: 0 },
 };
