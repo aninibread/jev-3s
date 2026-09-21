@@ -14,9 +14,9 @@ export const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
 export const MAX_DESCRIPTION_LENGTH = 1200;
 export const RULES_VERSION = "1";
 export const classificationRules = {
-  soup: "Ingredients served in substantial liquid and eaten with that liquid. Includes cereal with milk, stews and soup in a bread bowl. Soup takes precedence over an edible container.",
+  soup: "A wet mixture: a prepared dish in which free-flowing liquid is a substantial part of the normal presentation and is eaten together with ingredients suspended in, surrounded by or blended into it. Includes broth-based dishes, cereal with milk, stews and soup in a bread bowl.",
   sandwich:
-    "A dish supported by or enclosed in bread, dough, an edible wrapper or casing, without substantial serving liquid. Includes pizza, tacos, burritos, sushi rolls and dumplings.",
+    "A prepared food with a distinct edible outer layer or base that supports, contains, wraps or encloses other ingredients, without substantial free-flowing liquid. The structure can be bread, dough, a tortilla, a casing, rice or another edible base. Includes pizza, tacos, burritos, sushi rolls, dumplings and hot dogs.",
   salad:
-    "Everything else: a prepared dish that is neither served in substantial liquid nor supported by an edible wrapper or base. Includes dressed vegetables, rice dishes and loose pasta.",
+    "A dry or moist mixture: a prepared dish made by mixing, tossing or assembling multiple ingredients or separate pieces, without substantial free-flowing liquid and without a distinct edible outer layer or base containing the rest. Includes vegetable, fruit, grain, rice and pasta salads, stir-fries and other loose mixed dishes.",
 } as const;

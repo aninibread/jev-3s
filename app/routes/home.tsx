@@ -31,10 +31,10 @@ function Dialog({ title, onClose, children }: { title: string; onClose: () => vo
 function Rules() {
   return (
     <div className="rules-content">
-      <p><b>Soup</b> has substantial liquid.</p>
-      <p><b>Sandwich</b> has an edible base, wrapper, or casing.</p>
-      <p><b>Salad</b> is everything else.</p>
-      <p className="muted">Soup wins ties. Yes, cereal is soup and pizza is a sandwich.</p>
+      <p><b>Soup</b> is a wet mixture with substantial liquid that is eaten with the rest.</p>
+      <p><b>Sandwich</b> has a distinct edible outer layer or base holding other ingredients.</p>
+      <p><b>Salad</b> is a dry or moist mixture of ingredients or pieces, with no substantial liquid or edible outer layer.</p>
+      <p className="muted">When nothing fits perfectly, Jev picks the closest structure. Yes, cereal is soup and pizza is a sandwich.</p>
     </div>
   );
 }
