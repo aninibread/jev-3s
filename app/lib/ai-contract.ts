@@ -20,7 +20,7 @@ export type DogClassification = {
   probabilities: Record<DogCategory, number>;
   durationMs: number;
 };
-export const DOG_RULES_VERSION = "4";
+export const DOG_RULES_VERSION = "3";
 export const classificationRules = {
   soup: "A wet mixture: a prepared dish in which free-flowing liquid is a substantial part of the normal presentation and is eaten together with ingredients suspended in, surrounded by or blended into it. Includes broth-based dishes, cereal with milk, stews and soup in a bread bowl.",
   sandwich:
@@ -31,9 +31,9 @@ export const classificationRules = {
 
 export const dogClassificationRules = {
   wolf:
-    "A wolf-like dog: medium or large with an athletic, rangy or substantial frame, proportionate or long legs, and a longer muzzle. An alert silhouette and upright ears strengthen the resemblance.",
+    "A wolf-like dog: medium or large, athletic or rangy, with a longer muzzle and an alert, substantial frame. Upright ears strengthen this match but are not required. Includes huskies, shepherds and retrievers unless pig or rat traits are clearly stronger.",
   pig:
-    "A pig-like dog: compact, broad, stocky or barrel-bodied with a clearly short blunt snout as the defining feature. A broad head, wrinkles and heavy jowls strengthen the resemblance.",
+    "A pig-like dog: compact, broad, stocky or barrel-bodied with a clearly short blunt snout; this is the defining feature. A broad face, wrinkles or heavy jowls strengthen the match. Includes bulldogs and pugs.",
   rat:
-    "A rat-like dog: small, fine-boned or notably long and low, with a narrow or pointed muzzle, delicate or short limbs, or disproportionately large ears or eyes.",
+    "A rat-like dog: small or fine-boned, with a narrow or pointed face, conspicuously large ears or eyes, delicate limbs, or a very long low body. Includes chihuahuas, dachshunds and many toy breeds.",
 } as const;
