@@ -199,7 +199,10 @@ export default function Home() {
 
       <main className="classifier">
         <section className="intro">
-          <h1>Soup, salad, or sandwich?</h1>
+          <div className="title-row">
+            <h1>Soup, salad, or sandwich?</h1>
+            <Link className="dog-tag" to="/wolf-pig-rat" aria-label="Play Wolf, pig, or rat">🐶</Link>
+          </div>
           <p>Give Jev a food. It has to pick one.</p>
         </section>
 
@@ -272,7 +275,7 @@ export default function Home() {
         )}
       </main>
 
-      <footer className="site-footer"><Link to="/wolf-pig-rat">🐶 Wolf, pig, rat</Link><button onClick={() => setDialog("credits")}>Photo credits</button></footer>
+      <footer className="site-footer"><button onClick={() => setDialog("credits")}>Photo credits</button></footer>
       {dialog === "rules" && <Dialog title="The rules" onClose={() => setDialog(null)}><Rules /></Dialog>}
       {dialog === "credits" && <Dialog title="Photo credits" onClose={() => setDialog(null)}><Credits /></Dialog>}
     </div>
