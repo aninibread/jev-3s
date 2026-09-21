@@ -222,7 +222,7 @@ export default function Home() {
             </label>
           )}
 
-          {mode === "gallery" && (
+          {mode === "gallery" && !selection && (
             <div className="food-gallery">
               {foods.map((food: Food) => (
                 <button key={food.id} disabled={busy} aria-label={`Ask Jev about ${food.name}`} onClick={() => void classify({ name: food.name, description: food.description, image: food.image })}>
