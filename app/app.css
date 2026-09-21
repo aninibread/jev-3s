@@ -118,7 +118,7 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
   .classifier { width: min(100% - 28px, 720px); padding-top: 48px; }
   .intro h1 { font-size: 38px; }
   .title-row { width: 100%; }
-  .game-switch-tag { right: -4px; width: 52px; height: 48px; border-radius: 14px; font-size: 22px; }
+  .game-switch-tag { right: -30px; width: 52px; height: 48px; border-radius: 14px 0 0 14px; font-size: 22px; }
   .mode-tabs { width: 100%; }
   .mode-tabs button { min-width: 0; }
   .text-form input { font-size: 14px; }
@@ -140,13 +140,13 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
 .emoji-float { animation: title-emoji-float 3.6s ease-in-out infinite; }
 .emoji-float:nth-child(2) { animation-delay: -1.2s; animation-duration: 4.1s; margin-top: -14px; }
 .emoji-float:nth-child(3) { animation-delay: -2.4s; animation-duration: 3.8s; }
-.floating-emoji { display: grid; place-items: center; width: 62px; height: 62px; padding: 0; border: 3px solid var(--white); border-radius: 20px; background: #ffffff8c; box-shadow: 0 5px 18px #28251e0c; font-size: 42px; line-height: 1; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; }
+.floating-emoji { display: grid; place-items: center; width: 58px; height: 58px; padding: 0; border: 0; border-radius: 18px; background: transparent; font-size: 40px; line-height: 1; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; }
 .floating-emoji span { display: block; filter: drop-shadow(0 5px 4px #28251e15); transition: filter .2s; }
 .floating-emoji:hover span { filter: drop-shadow(0 7px 5px #28251e25); }
 @keyframes title-emoji-float { 0%, 100% { transform: translateY(3px) rotate(-5deg); } 50% { transform: translateY(-6px) rotate(5deg); } }
 @media (max-width: 620px) {
   .floating-emojis { height: 66px; margin-top: -16px; margin-bottom: 16px; gap: 12px; }
-  .floating-emoji { width: 58px; height: 58px; border-radius: 18px; font-size: 38px; }
+  .floating-emoji { width: 52px; height: 52px; font-size: 35px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .emoji-float { animation: none; }
