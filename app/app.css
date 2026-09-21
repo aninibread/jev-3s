@@ -99,6 +99,20 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
 .probability-list strong { text-align: right; font-variant-numeric: tabular-nums; }
 .again { min-height: 38px; margin-top: 26px; padding: 0 14px; border-radius: 2px; background: transparent; color: var(--ink); font-size: 12px; font-weight: 600; }
 
+@media (min-width: 621px) {
+  .verdict-card:not(:has(.verdict-image)) { grid-template-columns: 1fr; }
+  .verdict-card:not(:has(.verdict-image)) .verdict-content { padding: 42px 48px; }
+  .verdict-card:not(:has(.verdict-image)) .verdict-food { margin-bottom: 12px; font-size: 14px; }
+  .verdict-card:not(:has(.verdict-image)) h2 { font-size: 40px; }
+  .verdict-card:not(:has(.verdict-image)) .verdict-emoji { font-size: 40px; }
+  .verdict-card:not(:has(.verdict-image)) .probability-list { gap: 16px; margin-top: 34px; }
+  .verdict-card:not(:has(.verdict-image)) .probability-list > div { grid-template-columns: 120px 1fr 48px; gap: 18px; font-size: 15px; }
+  .verdict-card:not(:has(.verdict-image)) .category-label { gap: 9px; }
+  .verdict-card:not(:has(.verdict-image)) .category-label > span { width: 22px; font-size: 20px; }
+  .verdict-card:not(:has(.verdict-image)) .probability-list i { height: 4px; }
+  .verdict-card:not(:has(.verdict-image)) .again { min-height: 44px; margin-top: 34px; padding: 0 18px; font-size: 14px; }
+}
+
 .modal { position: fixed; inset: 0; width: min(92vw, 460px); max-height: min(82vh, 82dvh); margin: auto; padding: 0; border: 1px solid var(--line); border-radius: 16px; background: white; color: var(--ink); box-shadow: 0 24px 90px #0002; }
 .modal::backdrop { background: #0002; backdrop-filter: blur(4px); }
 .modal-inner { padding: 22px; }
