@@ -45,10 +45,12 @@ function Rules() {
 function Credits() {
   return (
     <div className="credits-list">
+      <p className="muted">Photos resized and converted to WebP; gallery thumbnails may be cropped.</p>
       {dogs.map((dog) => (
-        <a href={dog.sourceUrl} target="_blank" rel="noreferrer" key={dog.id}>
-          <span>{dog.name}</span><small>{dog.creator} · {dog.license}</small>
-        </a>
+        <div key={dog.id}>
+          <a href={dog.sourceUrl} target="_blank" rel="noreferrer"><span>{dog.name}</span><small>{dog.creator}</small></a>
+          <a href={dog.licenseUrl} target="_blank" rel="noreferrer"><small>{dog.license}</small></a>
+        </div>
       ))}
     </div>
   );
@@ -182,7 +184,13 @@ export default function Dogs() {
         <nav><button onClick={() => setDialog("rules")}>Rules</button></nav>
       </header>
       <main className="classifier">
-        <section className="intro"><h1>Wolf, pig, or rat?</h1><p>Give Jev a dog. It has to pick one.</p></section>
+        <section className="intro">
+          <div className="title-row">
+            <h1>Wolf, pig, or rat?</h1>
+            <Link className="game-switch-tag" to="/" aria-label="Play Soup, salad, or sandwich">🥣</Link>
+          </div>
+          <p>Give Jev a dog. It has to pick one.</p>
+        </section>
         <div className="mode-tabs" role="tablist" aria-label="Choose a dog source">
           {(["text", "photo", "gallery"] as Mode[]).map((item) => (
             <button key={item} role="tab" aria-selected={mode === item} className={mode === item ? "active" : ""} onClick={() => reset(item)}>

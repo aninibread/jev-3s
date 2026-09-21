@@ -201,7 +201,7 @@ export default function Home() {
         <section className="intro">
           <div className="title-row">
             <h1>Soup, salad, or sandwich?</h1>
-            <Link className="dog-tag" to="/wolf-pig-rat" aria-label="Play Wolf, pig, or rat">🐶</Link>
+            <Link className="game-switch-tag" to="/wolf-pig-rat" aria-label="Play Wolf, pig, or rat">🐶</Link>
           </div>
           <p>Give Jev a food. It has to pick one.</p>
         </section>
