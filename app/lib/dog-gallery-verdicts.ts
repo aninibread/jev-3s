@@ -7,4 +7,10 @@ export const dogGalleryVerdicts: Record<string, DogClassification> = {
   chihuahua: { choice: "rat", probabilities: { wolf: 0, pig: 0, rat: 1 }, durationMs: 0 },
   dachshund: { choice: "rat", probabilities: { wolf: 0, pig: 0, rat: 1 }, durationMs: 0 },
   "golden-retriever": { choice: "wolf", probabilities: { wolf: 1, pig: 0, rat: 0 }, durationMs: 0 },
+  "pomeranian": {"choice": "rat", "probabilities": {"wolf": 0, "pig": 0, "rat": 1}, "durationMs": 0},
+  "dalmatian": {"choice": "wolf", "probabilities": {"wolf": 1, "pig": 0, "rat": 0}, "durationMs": 0},
+  "french-bulldog": {"choice": "pig", "probabilities": {"wolf": 0, "pig": 1, "rat": 0}, "durationMs": 0},
+  "pug": {"choice": "pig", "probabilities": {"wolf": 0, "pig": 1, "rat": 0}, "durationMs": 0},
+  "poodle": {"choice": "rat", "probabilities": {"wolf": 0, "pig": 0, "rat": 1}, "durationMs": 0},
+  "italian-greyhound": {"choice": "rat", "probabilities": {"wolf": 0, "pig": 0, "rat": 1}, "durationMs": 0},
 };

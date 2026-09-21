@@ -137,3 +137,20 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+
+.floating-emojis { display: flex; justify-content: center; align-items: center; gap: 18px; height: 76px; margin: -28px auto 18px; }
+.emoji-float { animation: title-emoji-float 3.6s ease-in-out infinite; }
+.emoji-float:nth-child(2) { animation-delay: -1.2s; animation-duration: 4.1s; margin-top: -14px; }
+.emoji-float:nth-child(3) { animation-delay: -2.4s; animation-duration: 3.8s; }
+.floating-emoji { display: grid; place-items: center; width: 58px; height: 58px; padding: 0; border: 0; border-radius: 18px; background: transparent; font-size: 40px; line-height: 1; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; }
+.floating-emoji span { display: block; filter: drop-shadow(0 5px 4px #28251e15); transition: filter .2s; }
+.floating-emoji:hover span { filter: drop-shadow(0 7px 5px #28251e25); }
+@keyframes title-emoji-float { 0%, 100% { transform: translateY(3px) rotate(-5deg); } 50% { transform: translateY(-6px) rotate(5deg); } }
+@media (max-width: 620px) {
+  .floating-emojis { height: 66px; margin-top: -16px; margin-bottom: 16px; gap: 12px; }
+  .floating-emoji { width: 52px; height: 52px; font-size: 35px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .emoji-float { animation: none; }
+}

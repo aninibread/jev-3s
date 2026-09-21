@@ -70,4 +70,64 @@ export const dogs: Dog[] = [
     license: "CC BY 3.0",
     licenseUrl: "https://creativecommons.org/licenses/by/3.0",
   },
+  {
+    "id": "pomeranian",
+    "name": "Pomeranian",
+    "description": "A tiny orange-sable Pomeranian with a fluffy coat, fine legs, upright ears and a small pointed fox-like face.",
+    "image": "/dogs/pomeranian.webp",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pomeranian_orange-sable_Coco.jpg",
+    "creator": "Rob Hanson",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
+  },
+  {
+    "id": "dalmatian",
+    "name": "Dalmatian",
+    "description": "A large athletic Dalmatian with a white coat and black spots, long legs, a deep chest and a long muzzle.",
+    "image": "/dogs/dalmatian.webp",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dalmatien.jpg",
+    "creator": "Desaix83, based on a photograph by Le dalmatien",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+  },
+  {
+    "id": "french-bulldog",
+    "name": "French bulldog",
+    "description": "A compact cream French bulldog with a broad stocky body, blunt muzzle and large upright bat ears.",
+    "image": "/dogs/french-bulldog.webp",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:FrenchBulldog.jpg",
+    "creator": "Ccheaton",
+    "license": "Public domain",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/File:FrenchBulldog.jpg"
+  },
+  {
+    "id": "pug",
+    "name": "Pug",
+    "description": "A small stocky fawn pug with a barrel-shaped body, short legs, black wrinkled flat face and curled tail.",
+    "image": "/dogs/pug.webp",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2.5-year-old_fawn_male_pug.jpg",
+    "creator": "Abuk SABUK",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+  },
+  {
+    "id": "poodle",
+    "name": "Miniature poodle",
+    "description": "A small brown miniature poodle with a curly coat, delicate legs, floppy ears and a narrow muzzle.",
+    "image": "/dogs/poodle.webp",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miniature_Poodle_(Hungary).jpg",
+    "creator": "UszkarFoto92",
+    "license": "CC0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+    "id": "italian-greyhound",
+    "name": "Italian greyhound",
+    "description": "A small fine-boned blue-grey Italian greyhound with a long narrow muzzle, delicate limbs and folded ears.",
+    "image": "/dogs/italian-greyhound.webp",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:00000_Charcik_W%C5%82oski_b%C5%82%C4%99kitny.jpg",
+    "creator": "Tesori di Carli",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
 ];

@@ -1,3 +1,4 @@
+import { FloatingEmojis } from "../components/FloatingEmojis";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router";
 import { dogCategories, type DogCategory, type DogClassification } from "../lib/ai-contract";
@@ -185,9 +186,10 @@ export default function Dogs() {
       </header>
       <main className="classifier">
         <section className="intro">
+          <FloatingEmojis game="dogs" />
           <div className="title-row">
             <h1>Wolf, pig, or rat?</h1>
-            <Link className="game-switch-tag" to="/" aria-label="Play Soup, salad, or sandwich">🥣</Link>
+            <Link className="game-switch-tag" to="/" aria-label="Play Soup, salad, or sandwich">🍜</Link>
           </div>
           <p>Give Jev a dog. It has to pick one.</p>
         </section>

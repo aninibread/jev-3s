@@ -1,3 +1,4 @@
+import { FloatingEmojis } from "../components/FloatingEmojis";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router";
 import { foods, type Food } from "../lib/foods";
@@ -199,6 +200,7 @@ export default function Home() {
 
       <main className="classifier">
         <section className="intro">
+          <FloatingEmojis game="food" />
           <div className="title-row">
             <h1>Soup, salad, or sandwich?</h1>
             <Link className="game-switch-tag" to="/wolf-pig-rat" aria-label="Play Wolf, pig, or rat">🐶</Link>
