@@ -26,4 +26,10 @@ export const galleryVerdicts: Record<string, Verdict> = {
   waffle: { id: "waffle", choice: "sandwich", probabilities: { soup: 0, salad: 0.16, sandwich: 0.84 }, durationMs: 0 },
   "chicken-noodle": { id: "chicken-noodle", choice: "soup", probabilities: { soup: 1, salad: 0, sandwich: 0 }, durationMs: 0 },
   dumplings: { id: "dumplings", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+  cheesecake: { id: "cheesecake", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+  "avocado-toast": { id: "avocado-toast", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+  "chicken-pot-pie": { id: "chicken-pot-pie", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+  "berry-smoothie": { id: "berry-smoothie", choice: "soup", probabilities: { soup: 1, salad: 0, sandwich: 0 }, durationMs: 0 },
+  "loaded-fries": { id: "loaded-fries", choice: "salad", probabilities: { soup: 0, salad: 0.96, sandwich: 0.04 }, durationMs: 0 },
+  "salmon-nigiri": { id: "salmon-nigiri", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
 };

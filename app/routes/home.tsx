@@ -12,6 +12,7 @@ export function meta() {
 
 type Mode = "text" | "photo" | "gallery";
 type Selection = { id?: string; name: string; description: string; image?: string };
+const emoji: Record<Category, string> = { soup: "🥣", salad: "🥗", sandwich: "🥪" };
 
 function Dialog({ title, onClose, children }: { title: string; onClose: () => void; children: ReactNode }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -31,9 +32,9 @@ function Dialog({ title, onClose, children }: { title: string; onClose: () => vo
 function Rules() {
   return (
     <div className="rules-content">
-      <p><b>Soup</b> is a wet mixture with substantial liquid that is eaten with the rest.</p>
-      <p><b>Sandwich</b> has a distinct edible outer layer or base holding other ingredients.</p>
-      <p><b>Salad</b> is a dry or moist mixture of ingredients or pieces, with no substantial liquid or edible outer layer.</p>
+      <p><b><span aria-hidden="true">{emoji.soup}</span> Soup</b> is a wet mixture with substantial liquid that is eaten with the rest.</p>
+      <p><b><span aria-hidden="true">{emoji.sandwich}</span> Sandwich</b> has a distinct edible outer layer or base holding other ingredients.</p>
+      <p><b><span aria-hidden="true">{emoji.salad}</span> Salad</b> is a dry or moist mixture of ingredients or pieces, with no substantial liquid or edible outer layer.</p>
       <p className="muted">When nothing fits perfectly, Jev picks the closest structure. Yes, cereal is soup and pizza is a sandwich.</p>
     </div>
   );
@@ -42,10 +43,14 @@ function Rules() {
 function Credits() {
   return (
     <div className="credits-list">
-      {foods.map((food) => (
+      {foods.map((food) => food.sourceUrl ? (
         <a href={food.sourceUrl} target="_blank" rel="noreferrer" key={food.id}>
           <span>{food.name}</span><small>{food.creator} · {food.license}</small>
         </a>
+      ) : (
+        <div key={food.id}>
+          <span>{food.name}</span><small>{food.creator}</small>
+        </div>
       ))}
     </div>
   );
@@ -246,12 +251,15 @@ export default function Home() {
             {selection.image && <img className="verdict-image" src={selection.image} alt={selection.name} />}
             <div className="verdict-content">
               {mode !== "photo" && <p className="verdict-food">{selection.name}</p>}
-              <h2>Jev says {labels[verdict.choice].toLowerCase()}.</h2>
+              <h2>
+                <span className={`verdict-emoji ${verdict.choice}`} aria-hidden="true">{emoji[verdict.choice]}</span>
+                <span>Jev says {labels[verdict.choice].toLowerCase()}.</span>
+              </h2>
               {mode === "photo" && selection.description && <p className="detected">{selection.description}</p>}
               <div className="probability-list">
                 {categories.map((category) => (
                   <div key={category}>
-                    <span>{labels[category]}</span>
+                    <span className="category-label"><span aria-hidden="true">{emoji[category]}</span>{labels[category]}</span>
                     <i><b style={{ width: `${verdict.probabilities[category] * 100}%` }} /></i>
                     <strong>{Math.round(verdict.probabilities[category] * 100)}%</strong>
                   </div>
