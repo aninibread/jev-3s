@@ -131,9 +131,25 @@ export default function Home() {
     setSelection(item);
     setVerdict(null);
     setError("");
-    if (item.id && galleryVerdicts[item.id]) {
+    const normalizedDescription = item.description
+      .normalize("NFKC")
+      .toLocaleLowerCase("en-US")
+      .replace(/[^\p{L}\p{N}]+/gu, " ")
+      .trim()
+      .replace(/\s+/g, " ");
+    const galleryFood = item.id
+      ? foods.find((food) => food.id === item.id)
+      : foods.find((food) =>
+          food.name
+            .normalize("NFKC")
+            .toLocaleLowerCase("en-US")
+            .replace(/[^\p{L}\p{N}]+/gu, " ")
+            .trim()
+            .replace(/\s+/g, " ") === normalizedDescription,
+        );
+    if (galleryFood && galleryVerdicts[galleryFood.id]) {
       setStatus("idle");
-      setVerdict(galleryVerdicts[item.id]);
+      setVerdict(galleryVerdicts[galleryFood.id]);
       return;
     }
     setStatus("deciding");

@@ -9,6 +9,7 @@
     "typecheck": "wrangler types && react-router typegen && tsc -b",
     "deploy": "npm run build && wrangler deploy",
     "preview": "npm run build && vite preview",
+    "refresh:gallery": "node --experimental-strip-types scripts/refresh-gallery-verdicts.mjs",
     "cf-typegen": "wrangler types",
     "postinstall": "wrangler types",
     "test": "node tests/run.cjs"

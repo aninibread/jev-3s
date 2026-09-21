@@ -12,7 +12,7 @@ export type RaceEvent =
   | { type: "done"; durationMs: number };
 export const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
 export const MAX_DESCRIPTION_LENGTH = 1200;
-export const RULES_VERSION = "1";
+export const RULES_VERSION = "2";
 export const dogCategories = ["wolf", "pig", "rat"] as const;
 export type DogCategory = (typeof dogCategories)[number];
 export type DogClassification = {
@@ -20,7 +20,7 @@ export type DogClassification = {
   probabilities: Record<DogCategory, number>;
   durationMs: number;
 };
-export const DOG_RULES_VERSION = "3";
+export const DOG_RULES_VERSION = "4";
 export const classificationRules = {
   soup: "A wet mixture: a prepared dish in which free-flowing liquid is a substantial part of the normal presentation and is eaten together with ingredients suspended in, surrounded by or blended into it. Includes broth-based dishes, cereal with milk, stews and soup in a bread bowl.",
   sandwich:

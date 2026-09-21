@@ -124,9 +124,25 @@ export default function Dogs() {
     setSelection(item);
     setVerdict(null);
     setError("");
-    if (item.id && dogGalleryVerdicts[item.id]) {
+    const normalizedDescription = item.description
+      .normalize("NFKC")
+      .toLocaleLowerCase("en-US")
+      .replace(/[^\p{L}\p{N}]+/gu, " ")
+      .trim()
+      .replace(/\s+/g, " ");
+    const galleryDog = item.id
+      ? dogs.find((dog) => dog.id === item.id)
+      : dogs.find((dog) =>
+          dog.name
+            .normalize("NFKC")
+            .toLocaleLowerCase("en-US")
+            .replace(/[^\p{L}\p{N}]+/gu, " ")
+            .trim()
+            .replace(/\s+/g, " ") === normalizedDescription,
+        );
+    if (galleryDog && dogGalleryVerdicts[galleryDog.id]) {
       setStatus("idle");
-      setVerdict(dogGalleryVerdicts[item.id]);
+      setVerdict(dogGalleryVerdicts[galleryDog.id]);
       return;
     }
     setStatus("deciding");
