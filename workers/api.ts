@@ -2,6 +2,7 @@ import { foods } from "../app/lib/foods";
 import {
   MAX_DESCRIPTION_LENGTH,
   MAX_IMAGE_BYTES,
+  DOG_RULES_VERSION,
   RULES_VERSION,
   type Classification,
   type DogClassification,
@@ -307,7 +308,7 @@ export async function handleApi(
       const key = cache
         ? await cacheKey(
             request,
-            dogGame ? "dog-classification-1" : "classification",
+            dogGame ? `dog-classification-${DOG_RULES_VERSION}` : "classification",
             normalizeCacheInput(cleanDescription),
           )
         : undefined;

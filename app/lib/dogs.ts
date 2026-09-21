@@ -194,7 +194,7 @@ export const dogs: Dog[] = [
     id: "basset-hound",
     name: "Basset hound",
     description:
-      "A heavy low-slung basset hound with a long body, very short sturdy legs, broad muzzle and long floppy ears.",
+      "A heavy low-slung basset hound with a long body, very short sturdy legs, a long muzzle and long floppy ears.",
     image: "/dogs/basset-hound.webp",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Basset_hound_LM.jpg",
     creator: "Lilly M",
@@ -247,5 +247,78 @@ export const dogs: Dog[] = [
     creator: "Jeronimo Palacios",
     license: "CC BY 2.0",
     licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+  },
+  {
+    id: "shiba-inu",
+    name: "Shiba Inu",
+    description:
+      "A medium compact Shiba Inu with an athletic frame, pointed muzzle and small upright ears.",
+    image: "/dogs/shiba-inu.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:A_Shiba_Inu_enjoying_a_sunny_day.jpg",
+    creator: "Nancy Wong",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
+  },
+  {
+    id: "boxer",
+    name: "Boxer",
+    description:
+      "A large muscular boxer with a broad head, short blunt snout and heavy jowls.",
+    image: "/dogs/boxer.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:A_front_view_of_the_face_of_the_boxer_dog_breed.jpg",
+    creator: "Martin Vorel",
+    license: "Public domain",
+    licenseUrl:
+      "https://web.archive.org/web/20230926203737/https://creativecommons.org/licenses/publicdomain/",
+  },
+  {
+    id: "border-collie",
+    name: "Border collie",
+    description:
+      "A medium athletic Border collie with a substantial frame, long muzzle and alert ears.",
+    image: "/dogs/border-collie.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Border-collie-dog-1365525954Aa6.jpg",
+    creator: "Karen Arnold",
+    license: "CC0",
+    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+  },
+  {
+    id: "maltese",
+    name: "Maltese",
+    description:
+      "A tiny fine-boned white Maltese with delicate legs, a small narrow muzzle and dark round eyes.",
+    image: "/dogs/maltese.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:01_AKC_Maltese_Dog_Show_2013.jpg",
+    creator: "SheltieBoy",
+    license: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
+  },
+  {
+    id: "staffordshire-bull-terrier",
+    name: "Staffordshire bull terrier",
+    description:
+      "A muscular stocky Staffordshire bull terrier with a broad face and short blunt snout.",
+    image: "/dogs/staffordshire-bull-terrier.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Staffordshire-bull-terrier-white-2748733.jpg",
+    creator: "Public Domain Pictures",
+    license: "CC0",
+    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
+  },
+  {
+    id: "brussels-griffon",
+    name: "Brussels Griffon",
+    description:
+      "A tiny compact Brussels Griffon with a broad face, very short snout and large round eyes.",
+    image: "/dogs/brussels-griffon.webp",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Brussels_Griffon_Rembrant_(jpg_format).jpg",
+    creator: "Dan9186",
+    license: "CC BY-SA 3.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
   },
 ];
