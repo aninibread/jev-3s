@@ -1,0 +1,29 @@
+import type { Verdict } from "./game";
+
+// Generated once with the current Jev rules. Gallery inputs are immutable, so
+// shipping their verdicts avoids repeat model calls and makes selection instant.
+export const galleryVerdicts: Record<string, Verdict> = {
+  baozi: { id: "baozi", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+  biryani: { id: "biryani", choice: "salad", probabilities: { soup: 0, salad: 1, sandwich: 0 }, durationMs: 0 },
+  cereal: { id: "cereal", choice: "soup", probabilities: { soup: 1, salad: 0, sandwich: 0 }, durationMs: 0 },
+  burrito: { id: "burrito", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+  caesar: { id: "caesar", choice: "salad", probabilities: { soup: 0, salad: 1, sandwich: 0 }, durationMs: 0 },
+  falafel: { id: "falafel", choice: "salad", probabilities: { soup: 0, salad: 0.95, sandwich: 0.05 }, durationMs: 0 },
+  gazpacho: { id: "gazpacho", choice: "soup", probabilities: { soup: 1, salad: 0, sandwich: 0 }, durationMs: 0 },
+  "greek-salad": { id: "greek-salad", choice: "salad", probabilities: { soup: 0, salad: 1, sandwich: 0 }, durationMs: 0 },
+  burger: { id: "burger", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+  "hot-dog": { id: "hot-dog", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+  "ice-cream-sandwich": { id: "ice-cream-sandwich", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+  lasagna: { id: "lasagna", choice: "sandwich", probabilities: { soup: 0, salad: 0.07, sandwich: 0.93 }, durationMs: 0 },
+  "mac-and-cheese": { id: "mac-and-cheese", choice: "salad", probabilities: { soup: 0.01, salad: 0.99, sandwich: 0 }, durationMs: 0 },
+  nachos: { id: "nachos", choice: "sandwich", probabilities: { soup: 0, salad: 0.28, sandwich: 0.72 }, durationMs: 0 },
+  pho: { id: "pho", choice: "soup", probabilities: { soup: 1, salad: 0, sandwich: 0 }, durationMs: 0 },
+  pizza: { id: "pizza", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+  ramen: { id: "ramen", choice: "soup", probabilities: { soup: 1, salad: 0, sandwich: 0 }, durationMs: 0 },
+  spaghetti: { id: "spaghetti", choice: "salad", probabilities: { soup: 0.01, salad: 0.98, sandwich: 0.01 }, durationMs: 0 },
+  sushi: { id: "sushi", choice: "sandwich", probabilities: { soup: 0, salad: 0.03, sandwich: 0.97 }, durationMs: 0 },
+  tacos: { id: "tacos", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+  waffle: { id: "waffle", choice: "sandwich", probabilities: { soup: 0, salad: 0.16, sandwich: 0.84 }, durationMs: 0 },
+  "chicken-noodle": { id: "chicken-noodle", choice: "soup", probabilities: { soup: 1, salad: 0, sandwich: 0 }, durationMs: 0 },
+  dumplings: { id: "dumplings", choice: "sandwich", probabilities: { soup: 0, salad: 0, sandwich: 1 }, durationMs: 0 },
+};

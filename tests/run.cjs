@@ -31,9 +31,10 @@ function load(relative) {
   return module.exports;
 }
 const { parseJevResponse } = load("workers/ai.ts");
-const { handleApi, imageMatchesType, limitedBody } = load("workers/api.ts");
+const { cleanVisionDescription, handleApi, imageMatchesType, limitedBody, normalizeCacheInput } = load("workers/api.ts");
 const { selectFoods } = load("app/lib/game.ts");
 const { foods } = load("app/lib/foods.ts");
+const { galleryVerdicts } = load("app/lib/gallery-verdicts.ts");
 const good = {
   answers: {
     category: {
@@ -91,6 +92,27 @@ async function test(name, fn) {
       assert.ok(fs.existsSync(path.resolve(__dirname, "../public" + f.image)));
       assert.ok(f.creator && f.license && f.sourceUrl && f.description);
     }
+  });
+  await test("Every gallery food has a valid cached verdict", () => {
+    assert.deepEqual(new Set(Object.keys(galleryVerdicts)), new Set(foods.map((f) => f.id)));
+    for (const verdict of Object.values(galleryVerdicts)) {
+      assert.ok(["soup", "salad", "sandwich"].includes(verdict.choice));
+      assert.ok(Math.abs(Object.values(verdict.probabilities).reduce((a, b) => a + b, 0) - 1) < 0.02);
+    }
+  });
+  await test("Cache matching ignores case, punctuation and extra spacing", () => {
+    assert.equal(normalizeCacheInput("  Hot-Dog!! "), normalizeCacheInput("hot dog"));
+    assert.notEqual(normalizeCacheInput("hot dog"), normalizeCacheInput("corn dog"));
+  });
+  await test("Vision descriptions contain only the relevant food", () => {
+    assert.equal(
+      cleanVisionDescription("There are two pieces of naan bread on a plate."),
+      "Two pieces of naan bread",
+    );
+    assert.equal(
+      cleanVisionDescription("The image shows salmon and asparagus on a white plate."),
+      "Salmon and asparagus",
+    );
   });
   await test("Image signatures reject mismatched uploads", () => {
     assert.ok(imageMatchesType(new Uint8Array([255, 216, 255]), "image/jpeg"));

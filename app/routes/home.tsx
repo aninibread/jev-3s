@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { foods, type Food } from "../lib/foods";
+import { galleryVerdicts } from "../lib/gallery-verdicts";
 import { categories, labels, type Category, type Verdict } from "../lib/game";
 
 export function meta() {
@@ -10,7 +11,7 @@ export function meta() {
 }
 
 type Mode = "text" | "photo" | "gallery";
-type Selection = { name: string; description: string; image?: string };
+type Selection = { id?: string; name: string; description: string; image?: string };
 
 function Dialog({ title, onClose, children }: { title: string; onClose: () => void; children: ReactNode }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -122,6 +123,11 @@ export default function Home() {
     setSelection(item);
     setVerdict(null);
     setError("");
+    if (item.id && galleryVerdicts[item.id]) {
+      setStatus("idle");
+      setVerdict(galleryVerdicts[item.id]);
+      return;
+    }
     setStatus("deciding");
     try {
       const body = await readResponse(await fetch("/api/classify", {
@@ -224,7 +230,7 @@ export default function Home() {
           {mode === "gallery" && !selection && (
             <div className="food-gallery">
               {foods.map((food: Food) => (
-                <button key={food.id} disabled={busy} aria-label={`Ask Jev about ${food.name}`} onClick={() => void classify({ name: food.name, description: food.description, image: food.image })}>
+                <button key={food.id} disabled={busy} aria-label={`Ask Jev about ${food.name}`} onClick={() => void classify({ id: food.id, name: food.name, description: food.description, image: food.image })}>
                   <img src={food.image} alt="" /><span>{food.name}</span>
                 </button>
               ))}
