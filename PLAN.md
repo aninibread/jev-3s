@@ -74,6 +74,22 @@ Include explicit examples and precedence for ambiguous cases, such as cereal wit
 
 Jev returns the selected category and probabilities. Any playful response text is templated application copy, not represented as a generated explanation from Jev.
 
+## Food library and image sourcing
+
+Use FoodGuessr and DishGuessr as references for a varied food collection. DishGuessr explicitly credits Wikimedia Commons and says photos retain their individual licenses. Source reusable photos from their original Commons file pages, with each image’s license checked. Its photo-credits page was not retrievable during planning, so individual image matches remain to be verified. No publicly reusable FoodGuessr dataset was identified in this review; its terms do not grant a general reuse license for its library.
+
+Start with approximately 30 foods across cuisines, with a mix of obvious cases and entertaining boundary cases. Candidate dishes include ramen, pho, gazpacho, tacos, burritos, pizza, sushi, dumplings, cereal with milk, macaroni and cheese, biryani, and ice cream sandwiches. These are candidate dish names, not a finalized licensed image collection or predetermined Jev answers.
+
+For each catalog entry, record a stable ID, dish name, neutral description, image path, original source page, creator, license name and URL, attribution text, and any image modifications. Provide a compact Photo credits view. Use our own descriptions and validate them against the actual photograph.
+
+Select five distinct foods per session with varied presentation and at least one debatable item, without using live Jev answers to cherry-pick the set. Optimize and host permitted copies with the app so image loading does not depend on a game website. Preload the chosen set before starting the race. Keep Jev classification live even though the images and descriptions are prepared in advance.
+
+Sourcing references:
+- DishGuessr photo-source statement: https://dishguessr.com/
+- DishGuessr photo credits (individual credits still to verify): https://dishguessr.com/photo-credits
+- Wikimedia Commons reuse guidance: https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia
+- FoodGuessr content terms: https://www.foodguessr.com/terms-of-service
+
 ## Uploaded photos
 
 Let a user select or drop a photo, preview it, and submit it. Validate supported file types and size on both client and server, and resize oversized images before sending where practical.

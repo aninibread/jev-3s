@@ -1,79 +1,55 @@
-# Welcome to React Router!
+# 3s — Soup, salad or sandwich?
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A five-food game of human instinct versus Jev, built with React Router, Tailwind CSS, and Cloudflare Workers AI.
 
-## Features
+## Run locally
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+Use Node.js 22.12+ (Node 24 recommended), then:
 
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
-```bash
+```sh
 npm install
-```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
+npx wrangler login
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+If the computer runs out of file watchers, use `CHOKIDAR_USEPOLLING=true npm run dev`.
 
-## Previewing the Production Build
+Cloudflare account `323f42859527b406beadd91bff779583` is explicitly configured in `wrangler.jsonc`. The AI binding is remote, so local gameplay calls real Cloudflare services. Jev (`typesafe/jev`) requires available AI Gateway credits or a supported provider-key setup. No separate API key is embedded in the app. During initial verification, both the binding and direct account REST endpoint returned HTTP 402 / code 2021, insufficient AI Gateway balance. The photo-reading model completed successfully.
 
-Preview the production build locally:
+## Included
 
-```bash
-npm run preview
-```
+- Five concurrent Jev classifications, streamed as NDJSON; answers remain hidden in the UI until the matching human choice.
+- 23 food photos with individual Wikimedia Commons credit and license links.
+- Per-food decisions and probabilities, active human timing, parallel batch timing, and explicit measurement context.
+- Upload and drop photos, resize them before sending, review/correct the vision description, then compare with Jev.
+- Rules and credits dialogs, keyboard shortcuts, mobile layouts, reduced-motion support.
+- Share summary text or download a result image; no account or database needed.
 
-## Building for Production
+## Endpoints
 
-Create a production build:
+- `POST /api/race`: `{ "ids": [five unique catalog food IDs] }`; returns result/error events followed by done.
+- `POST /api/analyze`: multipart form field `image`; returns description and photo-reading duration. Browser accepts up to 8 MB, resizes to 1280px and JPEG; server caps processed images at 4 MB.
+- `POST /api/classify`: `{ "description": "8–1200 characters" }`; returns category, probabilities, and Jev response duration.
+- `GET /api/status`: binding presence only, not an inference or billing health check.
 
-```bash
+The upload vision model is `@cf/llava-hf/llava-1.5-7b-hf`. Jev reads text descriptions, not images. Photos are not persisted by the application. The Worker has a per-IP rate limit of 12 requests per minute. Native model calls can incur usage charges.
+
+## Verify
+
+```sh
+npm test
+npm run typecheck
 npm run build
 ```
 
-## Deployment
+Tests cover response validation, probability distributions, random game selection, asset metadata, bounded request bodies, image signatures, request origin validation, streaming results, and model failures. Test AI responses exist only in tests; production never substitutes fixture answers or timings.
 
-Deployment is done using the Wrangler CLI.
+For browser verification, desktop and 390px/320px layouts were checked. The five-round success journey, out-of-order responses, concealed answers, replay, uploads and download were exercised with browser-intercepted test responses. Real photo analysis succeeded. Real Jev success remains unverified pending account credits. No deployment has been made.
 
-To build and deploy directly to production:
+## Deploy
 
-```sh
-npm run deploy
-```
+After live Jev verification, deploy to the configured account with `npm run deploy`. This publishes the app publicly. Confirm account and billing before doing so.
 
-To deploy a preview URL:
+## Image licenses
 
-```sh
-npx wrangler versions upload
-```
-
-You can then promote a version to production after verification or roll it out progressively.
-
-```sh
-npx wrangler versions deploy
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+Every served food image is listed in `app/lib/foods.ts`, including the original file page, photographer, license, and modifications. Resized WebP copies retain the original image licenses. The app’s Photo credits dialog exposes this information. Source metadata was retrieved from Wikimedia Commons. Game cards may crop images visually; downloaded result images contain text only.
