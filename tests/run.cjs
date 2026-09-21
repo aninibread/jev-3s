@@ -30,11 +30,13 @@ function load(relative) {
   })(localRequire, module, module.exports);
   return module.exports;
 }
-const { parseJevResponse } = load("workers/ai.ts");
+const { parseDogResponse, parseJevResponse } = load("workers/ai.ts");
 const { cleanVisionDescription, handleApi, imageMatchesType, limitedBody, normalizeCacheInput } = load("workers/api.ts");
 const { selectFoods } = load("app/lib/game.ts");
 const { foods } = load("app/lib/foods.ts");
 const { galleryVerdicts } = load("app/lib/gallery-verdicts.ts");
+const { dogs } = load("app/lib/dogs.ts");
+const { dogGalleryVerdicts } = load("app/lib/dog-gallery-verdicts.ts");
 const good = {
   answers: {
     category: {
@@ -80,6 +82,13 @@ async function test(name, fn) {
     ])
       assert.throws(() => parseJevResponse(value));
   });
+  await test("Dog parser accepts only wolf, pig, or rat", () => {
+    const answer = {
+      answers: { category: { choice: "rat", probabilities: { wolf: 0.05, pig: 0.1, rat: 0.85 } } },
+    };
+    assert.equal(parseDogResponse(answer).choice, "rat");
+    assert.throws(() => parseDogResponse(good));
+  });
   await test("Every randomized round has five unique foods and a debate", () => {
     for (let i = 0; i < 200; i++) {
       const set = selectFoods(foods);
@@ -97,6 +106,16 @@ async function test(name, fn) {
     assert.deepEqual(new Set(Object.keys(galleryVerdicts)), new Set(foods.map((f) => f.id)));
     for (const verdict of Object.values(galleryVerdicts)) {
       assert.ok(["soup", "salad", "sandwich"].includes(verdict.choice));
+      assert.ok(Math.abs(Object.values(verdict.probabilities).reduce((a, b) => a + b, 0) - 1) < 0.02);
+    }
+  });
+  await test("Every dog photo, credit, and gallery verdict is valid", () => {
+    assert.deepEqual(new Set(Object.keys(dogGalleryVerdicts)), new Set(dogs.map((dog) => dog.id)));
+    for (const dog of dogs) {
+      assert.ok(fs.existsSync(path.resolve(__dirname, "../public" + dog.image)));
+      assert.ok(dog.creator && dog.license && dog.sourceUrl && dog.description);
+      const verdict = dogGalleryVerdicts[dog.id];
+      assert.ok(["wolf", "pig", "rat"].includes(verdict.choice));
       assert.ok(Math.abs(Object.values(verdict.probabilities).reduce((a, b) => a + b, 0) - 1) < 0.02);
     }
   });
@@ -167,6 +186,17 @@ async function test(name, fn) {
       ctx,
     );
     assert.equal(response.status, 403);
+  });
+  await test("Dog game uses its own state and categories", async () => {
+    let input;
+    const dogEnv = { AI: { run: async (_model, value) => {
+      input = value;
+      return { answers: { category: { choice: "wolf", probabilities: { wolf: 0.9, pig: 0.06, rat: 0.04 } } } };
+    } } };
+    const response = await handleApi(req("classify", { game: "dogs", description: "A tall husky" }), dogEnv, ctx);
+    assert.equal(response.status, 200);
+    assert.equal((await response.json()).choice, "wolf");
+    assert.equal(input.state.dog_description, "A tall husky");
   });
   await test("Live race streams five associated results and a completion", async () => {
     const ids = foods.slice(0, 5).map((f) => f.id);
