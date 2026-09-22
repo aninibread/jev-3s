@@ -63,6 +63,11 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
 .food-gallery button:hover img { transform: scale(1.025); }
 .food-gallery button:disabled { opacity: .55; }
 
+@media (min-width: 621px) {
+  .food-gallery { grid-auto-rows: 140px; align-items: start; }
+  .food-gallery button { width: 100%; height: 140px; aspect-ratio: auto; }
+}
+
 .thinking { display: flex; justify-content: center; align-items: center; gap: 9px; padding: 28px; color: var(--muted); font-size: 13px; }
 .loader { width: 14px; height: 14px; display: inline-block; border: 2px solid #d4d1ca; border-top-color: var(--ink); border-radius: 999px; animation: spin .75s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
